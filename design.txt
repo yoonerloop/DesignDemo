@@ -1,0 +1,63 @@
+CollapsingToolbarLayout:主要是提供一个可折叠的Toolbar容器，对容器中的不同View设置layout_collapseMode折叠模式，来达到不同的折叠效果。
+作为AppBarLayout的子布局进行配合使用
+app:contentScrim="@android:color/holo_blue_dark";//titebar的背景颜色
+app:title="赵丽颖";//titlebar所展示的字体
+app:scrimAnimationDuration="50";//该属性控制toolbar收缩时，颜色变化的动画持续时间。
+    即颜色变为contentScrim所指定的颜色进行的动画所需要的时间。
+app:expandedTitleGravity="bottom|right";//titebar展开后字体显示的位置
+app:collapsedTitleGravity="center_horizontal";//titlebar到最上边时候的显示位置
+app:titleEnabled="true";//是否显示标题文本
+app:expandedTitleMargin="20dp";//展开之后的文字margin
+Android:fitsSystemWindows="true";//预留空间，能够实现沉浸式状态栏效果
+app:layout_collapseParallaxMultiplier="0.7";//设置视差的系数，介于0.0-1.0之间。越大视差越大
+
+
+
+
+AppBarLayout：
+android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar";//主题颜色
+app:layout_scrollFlags="scroll|exitUntilCollapsed";//支持滑动收缩效果
+
+
+可收缩的View:
+app:layout_collapseParallaxMultiplier="0.5";//图片收缩时的视差因子
+app:layout_collapseMode="parallax";//View随着控件的滑动而收缩
+
+
+Toolbar：
+app:layout_collapseMode="pin";//pin收缩后固定于最顶端，parallax随着控件滑动收缩而收缩
+
+可滑动的View（NestedScrollView，RecycleView,ViewaPger）：
+app:layout_behavior="@string/appbar_scrolling_view_behavior";//为滑动控件设置Behavior,
+    这样上面的控件才能做出相应改变，不加这个不会生效
+注意：如果要实现左右，上下都能滑动的功能，父控件应为ViewaPger，则子空间必须为RecycleView，如果为listview则会引起滑动冲突问题。更不要
+   NestedScrollView嵌套ViewaPger，会使简单的功能变复杂引起滑动冲突。
+
+
+CardView：CardView是在安卓5.0提出的卡片式控件。
+app:cardBackgroundColor="#6699FF";//设置选项卡的背景
+app:cardCornerRadius="7dp";//设置选项卡的圆角大小
+app:cardElevation="7dp";//设置选项卡的阴影背景大小
+app:cardMaxElevation="10dp"//设置z轴的最大高度值
+app:cardUseCompatPadding="true";//兼容android5.0以上版本两个卡片之间的距离失效问题
+android:clickable="true";//点击产生水波纹效果
+padding设置：
+app:contentPadding 设置内容的padding
+app:contentPaddingLeft 设置内容的左padding
+app:contentPaddingTop 设置内容的上padding
+app:contentPaddingRight 设置内容的右padding
+app:contentPaddingBottom 设置内容的底padding
+
+
+FloatingActionButton:
+android:layout_gravity="end|bottom";//在布局上的显示 位置
+app:borderWidth="0dp";//按钮内边框阴影带边框大小
+app:backgroundTint="#f00";//按钮图片外围颜色
+app:elevation="6dp";//按钮外边框阴影带的大小
+app:pressedTranslationZ="52dp";//点击后阴影扩散的效果
+app:rippleColor="#33728dff";//按钮边框阴影的颜色,默认取的是theme中的colorControlHighlight。
+android:clickable="true";//点击产生水波纹效果
+
+
+
+            tabLayout.setVerticalScrollbarPosition(2);//设置默认的选中项
